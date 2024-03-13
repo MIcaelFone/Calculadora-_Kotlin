@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDouble()
-
-        var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDouble()
 
         var resultado = findViewById<TextView>(R.id.resultado)
 
@@ -31,6 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.subtracao)
             .setOnClickListener {
+
+                var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDoubleOrNull()
+
+                var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDoubleOrNull()
+
 
 
                 if (number01 != null && number02 != null) {
@@ -56,9 +58,14 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.multiplicacao)
             .setOnClickListener {
 
+                var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDouble()
+
+                var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDouble()
+
+
                 if (number01 != null && number02 != null) {
 
-                    var calculo: Double = number01 * number02
+                    var calculo: Double = number01!! * number02!!
 
 
                     resultado.text = calculo.toString()
@@ -73,10 +80,14 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.divisao)
                 .setOnClickListener {
 
+                    var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDoubleOrNull()
 
-                if (number01 != null && number02 != null) {
+                    var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDoubleOrNull()
 
-                    var calculo: Double = number01 / number02
+
+                    if (number01 != null && number02 != null) {
+
+                    var calculo: Double = number01!! / number02!!
 
                     print(calculo)
 
@@ -89,26 +100,33 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.clean)
-
-            .setOnClickListener{
-
-
-            number01=0.0
-
-            number02=0.0
+            .setOnClickListener {
 
 
-            resultado.text=""
+            var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDoubleOrNull()
 
-        }
+            var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDoubleOrNull()
+
+            number01=null
+
+            number02=null
+
+            resultado.text = ""
+
+            }
 
 
-        findViewById<Button>(R.id.soma).setOnClickListener {
 
+        findViewById<Button>(R.id.soma)
+            .setOnClickListener {
+
+            var number01 = findViewById<TextView>(R.id.valor1).text.toString().toDoubleOrNull()
+
+            var number02 = findViewById<TextView>(R.id.valor2).text.toString().toDoubleOrNull()
 
             if (number01 != null && number02 != null) {
 
-                val calculo: Double = number01 + number02
+                val calculo: Double = number01!! + number02!!
 
                 resultado.text = calculo.toString()
             } else {
